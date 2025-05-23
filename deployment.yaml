@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bulletin-board-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bulletin-board-app
+  template:
+    metadata:
+      labels:
+        app: bulletin-board-app
+    spec:
+      containers:
+        - name: bulletin-board-app
+          image: jdino13/bulletin-board-app:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bulletin-board-service
+spec:
+  type: NodePort
+  selector:
+    app: bulletin-board-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+      nodePort: 30007

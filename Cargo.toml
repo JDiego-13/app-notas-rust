@@ -1,0 +1,13 @@
+[package]
+name = "bulletin-board-app"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.7"
+hyper = "1"
+tokio = { version = "1", features = ["full"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["trace"] }
