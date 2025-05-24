@@ -1,0 +1,1 @@
+HandleError<Route, fn(std::io::Error) -> impl Future<Output = impl IntoResponse> {handle_error}, _>: tower::Service<axum::http::Request<Body>>
