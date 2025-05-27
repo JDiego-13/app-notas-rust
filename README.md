@@ -5,7 +5,32 @@ Integrantes:
 - Galaviz Flores Christian Darío
 
 
------------------------------------------------
+-------------------------------------------------------------
+Para hacer pruebas locales.
+1. Compilar el proyecto
+cargo build
+
+2. Ejecutarmo localmente:
+cargo run
+
+3. Visitar desde el navegador de forma local:
+http://localhost:3000
+
+
+-------------------------------------------------------------
+PROBAR LA API CON HERRAMIENTAS.
+
+1. Desde la terminal, probar:
+curl http://localhost:3000/notes
+
+2. Agregar nota:
+curl -X POST http://localhost:3000/notes -H "Content-Type: application/json" -d '{"title": "Nota 1", "content": "Papel"}'
+
+3. Eliminar la nota:
+curl -X DELETE http://localhost:3000/notes/1
+
+-------------------------------------------------------------
+
 Dentro de la carpteta cd ~/Descargas app-notas-rust: (Tu carpeta donde tienes el proyecto)
 
 
@@ -36,7 +61,14 @@ cargo build --release
 docker build -t jdino13/bulletin-board-app:latest .
 docker push jdino13/bulletin-board-app:latest
 
+2.1. Puede que se necesite hacer un inicio del minikube:
+minikube start
+
 3. Luego hacer:
 kubectl rollout restart deployment bulletin-board-app
 
+--------------------------------------------------------------
+LIBERAR ESPACIO.
+1. Limpia imágenes y contenedores Docker que no uses:
+docker system prune -a
 

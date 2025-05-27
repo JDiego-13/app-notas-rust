@@ -22,9 +22,19 @@
             list.innerHTML = '';
             notes.forEach(note => {
                 const li = document.createElement('li');
-                li.textContent = `${note.id}. ${note.title}: ${note.content}`;
+                li.innerHTML = `
+                    <strong>${note.title}</strong>: ${note.content}
+                    <button onclick="deleteNote(${note.id})">Eliminar</button>
+                `;
                 list.appendChild(li);
             });
+        }
+
+        async function deleteNote(id) {
+            await fetch(`/notes/${id}`, {
+                method: 'DELETE'
+            });
+            loadNotes();
         }
 
         document.getElementById('noteForm').addEventListener('submit', async (e) => {
